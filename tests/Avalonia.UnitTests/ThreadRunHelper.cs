@@ -29,4 +29,6 @@ public class ThreadRunHelper
         cb();
         return null;
     });
+
+    public static void RunOnDedicatedThreadAndWait(Action cb) => RunOnDedicatedThread(cb).GetAwaiter().GetResult();
 }
