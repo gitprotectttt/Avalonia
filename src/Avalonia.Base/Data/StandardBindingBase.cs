@@ -7,7 +7,7 @@ using Avalonia.Data.Converters;
 namespace Avalonia.Data;
 
 /// <summary>
-/// Defines properties common to both <see cref="Binding"/> and <c>CompiledBindingExtension</c>.
+/// Defines properties common to both <see cref="CompiledBinding"/> and <see cref="ReflectionBinding"/>.
 /// </summary>
 public abstract class StandardBindingBase : BindingBase
 {
@@ -56,6 +56,16 @@ public abstract class StandardBindingBase : BindingBase
     /// Gets or sets the binding priority.
     /// </summary>
     public BindingPriority Priority { get; set; }
+
+    /// <summary>
+    /// Gets or sets the object to use as the binding source.
+    /// </summary>
+    /// <remarks>
+    /// By default, bindings bind to the value in the target element's
+    /// <see cref="StyledElement.DataContext"/> property. This can be overridden by setting
+    /// the <see cref="Source"/> property on the binding to a different object.
+    /// </remarks>
+    public object? Source { get; set; } = AvaloniaProperty.UnsetValue;
 
     /// <summary>
     /// Gets or sets the string format.
